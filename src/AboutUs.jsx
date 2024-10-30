@@ -1,16 +1,17 @@
 import React from 'react';
 import './AboutUs.css';
-
+import { useDispatch } from 'react-redux';
+import { addItem } from './CartSlice';
 function AboutUs() {
   return (
     <div className="about-us-container">
       {/* <h1 className="about-us-heading">About Us</h1> */}
-      <p className="about-us-description">Welcome to Paradise Nursery, where green meets serenity!</p>
+      <p className="about-us-description">Welcome to Batool's Plants, where green meets serenity!</p>
       <p className="about-us-content">
-        At Paradise Nursery, we are passionate about bringing nature closer to you. Our mission is to provide a wide range of 
-        high-quality plants that not only enhance the beauty of your surroundings but also contribute to a healthier and 
-        more sustainable lifestyle. From air-purifying plants to aromatic fragrant ones, we have something for every 
-        plant enthusiast.
+       Welcome to Batool's Plants Company (A Closed Joint-Stock Company).The Company established in 1983 as a Sole Proprietorship, 
+        in 2003 it was transformed into a limited liability company in 2013, it was finally transformed into a 
+        Closed Joint-Stock Company in 2016.we are distributing of the following products: Bedding plants, Vegetable seedlings, 
+        Indoor Plants, Rare plants, In/outdoor pots, Garden supplies, Soil, High polished River stone and others.  
       </p>
       {/* <p className="plant_logo_left"><img src="https://p1.hiclipart.com/preview/922/979/640/green-leaf-logo-emoji-seedling-emoticon-sticker-plant-plant-stem-flower-png-clipart-thumbnail.jpg" height='50px' width='50px' alt="" /></p> */}
       <p className="about-us-content">
