@@ -11,7 +11,9 @@ function App() {
   const handleGetStartedClick = () => {
     setShowProductList(true);
   };
-
+ const handleReturnClick = () => {
+    setShowProductList(false);
+  }
   return (
     <div className="app-container">
       <div className={`landing-page ${showProductList ? 'fade-out' : ''}`}>
