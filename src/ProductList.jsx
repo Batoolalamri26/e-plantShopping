@@ -25,6 +25,10 @@ function ProductList(props) {
       const totalItems = () => {
         return cartItems.reduce((total, item) => total + item.quantity, 0);
     }
+      const alreadyInCart = (itemName) => {
+        return cartItems.some((item) => item.name === itemName);
+    }
+    
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -291,7 +295,7 @@ const handlePlantsClick = (e) => {
         {!showCart? (
         <div className="product-grid">
               <br></br>
-    { plantsArray.map((category, index) => ( <div key={index}>
+    {plantsArray.map((category, index) => ( <div key={index}>
         <h1><div>{category.category}</div></h1>
         <div className="product-list">
             {category.plants.map((plant, plantIndex) => (
