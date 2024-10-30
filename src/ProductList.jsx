@@ -17,7 +17,14 @@ function ProductList(props) {
     useEffect(() => {
         
     }, []);
- 
+
+     const handleAddToCart = (product) => {
+    dispatch(addItem(product));
+    setAddedToCart((prevState) => ({...prevState, [product.name]: true,  }));
+  };
+      const totalItems = () => {
+        return cartItems.reduce((total, item) => total + item.quantity, 0);
+    }
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -259,10 +266,7 @@ const handlePlantsClick = (e) => {
     e.preventDefault();
     setShowCart(false);
   };
-  const handleAddToCart = (product) => {
-    dispatch(addItem(product));
-    setAddedToCart((prevState) => ({...prevState, [product.name]: true,  }));
-  };
+ 
   
     return (
         <div>
@@ -272,7 +276,7 @@ const handlePlantsClick = (e) => {
                <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
                <a href="/" style={{textDecoration:'none'}}>
                         <div>
-                    <h3 style={{color:'white'}}>Paradise Nursery</h3>
+                    <h3 style={{color:'white'}}>Batool's Plants</h3>
                     <i style={{color:'white'}}>Where Green Meets Serenity</i>
                     </div>
                     </a>
@@ -286,15 +290,16 @@ const handlePlantsClick = (e) => {
         </div>
         {!showCart? (
         <div className="product-grid">
-    {plantsArray.map((category, index) => (
-    <div key={index}>
+              <br></br>
+    { plantsArray.map((category, index) => ( <div key={index}>
         <h1><div>{category.category}</div></h1>
         <div className="product-list">
             {category.plants.map((plant, plantIndex) => (
             <div className="product-card" key={plantIndex}>
                 <img className="product-image" src={plant.image} alt={plant.name} />
                 <div className="product-title">{plant.name}</div>
-                {/*Similarly like the above plant.name show other details like description and cost*/}
+                 <p>{plant.description}</p>
+                    <p>{plant.cost}</p>
                 <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
             </div>
             ))}
