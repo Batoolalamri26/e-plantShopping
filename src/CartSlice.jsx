@@ -19,11 +19,10 @@ export const CartSlice = createSlice({
 
     
     removeItem: (state, action) => {  
-          const  { name, image, cost }=action.payload;
-      const existingItem=state.items.find((item)=>item.name===action.name);
+       const item=action.payload;
+      const existingItem=state.items.find((i)=>i.name===item.name);
       if(existingItem){
-        
-        state.items=state.items.filter(item =>item.name!==action.payload);
+        state.items=state.items.filter((i)=>i.name!==item.name);
       }
      
     },
@@ -32,12 +31,13 @@ export const CartSlice = createSlice({
 
        
     updateQuantity: (state, action) => {
-  const { name, quantity } = action.payload;
-  const itemToUpdate = state.items.find(item => item.name === name);
+     const { name, quantity } = action.payload;
+      const item = state.items.find((i) => i.name === name);
       item.quantity = quantity;
-  if (itemToUpdate.quantity === 0) {
-  itemToUpdate.quantity = quantity;
-}
+      if (item.quantity === 0) {
+        state.items = state.items.filter((i) => i.name !== name);
+      }
+
     
     },
   },
